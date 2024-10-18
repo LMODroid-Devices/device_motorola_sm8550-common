@@ -140,7 +140,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # Charger
-WITH_LINEAGE_CHARGER := false
+WITH_LMODROID_CHARGER := false
 
 # ConfigStore
 PRODUCT_PACKAGES += \
