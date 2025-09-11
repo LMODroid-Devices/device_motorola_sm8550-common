@@ -227,7 +227,12 @@ $(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.1-service.motorola_kalama
+    vendor.lineage.livedisplay-service.sdm \
+    vendor.lineage.livedisplay-service.sysfs
+
+$(call soong_config_set,livedisplay_sdm,enable_dm,false)
+$(call soong_config_set,livedisplay_sysfs,enable_af,true)
+$(call soong_config_set,livedisplay_sysfs,enable_se,true)
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -332,7 +337,11 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors-service.multihal \
-    sensors.dynamic_sensor_hal
+    sensors.dynamic_sensor_hal \
+    sensors.moto_sm8550
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
